@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>New Orleans Hamburger & Seafood Co. | Order Online</title>
+<meta name="description" content="Thin-fried catfish, half-pound burgers, and poboys since 1984. Pick your location and order online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#B3242C; --red-dark:#8E1B22; --navy:#1D2B7F; --navy-dark:#141E5C;
+  --yellow:#FBC52D; --cream:#FFF9EC; --ink:#1A1A1F; --muted:#5E5E68; --line:#E8DFC8; --white:#fff;
+  --radius:14px; --shadow:0 6px 24px rgba(20,30,92,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:132px}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.05}
+
+/* preview strip */
+.preview{background:var(--navy-dark);color:#cfd4f5;font-size:12px;text-align:center;padding:6px 12px}
+.preview strong{color:var(--yellow);font-weight:700}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:var(--red);box-shadow:0 2px 0 var(--navy)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.logo img{height:48px;width:auto}
+nav.main{display:none;gap:22px;margin-left:auto;font-weight:500;font-size:15px;color:#fff}
+nav.main a{text-decoration:none;opacity:.92;padding:6px 2px;border-bottom:2px solid transparent}
+nav.main a:hover{border-color:var(--yellow);opacity:1}
+.top-actions{display:flex;gap:10px;margin-left:auto;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-radius:999px;padding:12px 22px;font-size:15px;transition:transform .12s,background .12s;text-decoration:none;min-height:44px}
+.btn:active{transform:scale(.97)}
+.btn-yellow{background:var(--yellow);color:var(--navy-dark)}
+.btn-yellow:hover{background:#ffd451}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-dark)}
+.btn-line{border:2px solid currentColor}
+.cart-btn{position:relative;background:var(--navy);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;min-height:44px}
+.cart-btn .count{background:var(--yellow);color:var(--navy-dark);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:13px;padding:0 6px}
+#topOrder{white-space:nowrap}
+@media(max-width:560px){#topOrder{display:none}.logo img{height:44px}}
+@media(min-width:900px){nav.main{display:flex}.top-actions{margin-left:0}}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:auto -10% -40% auto;width:560px;height:560px;border-radius:50%;background:var(--red);opacity:.35}
+.hero .wrap{position:relative;display:grid;gap:36px;padding-top:52px;padding-bottom:56px}
+.eyebrow{color:var(--yellow);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.hero h1{font-size:clamp(40px,8vw,78px);margin:12px 0 16px}
+.hero h1 em{font-style:normal;color:var(--yellow)}
+.hero p.lead{font-size:18px;color:#dfe3ff;max-width:520px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.badge{border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500}
+.order-card{background:var(--cream);color:var(--ink);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border-top:6px solid var(--yellow)}
+.order-card h2{font-size:28px;color:var(--red)}
+.order-card p.sub{color:var(--muted);font-size:14px;margin:4px 0 16px}
+label.f{display:block;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:14px 0 6px;color:var(--navy)}
+select{width:100%;padding:14px;border:2px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink);min-height:48px}
+select:focus{border-color:var(--navy);outline:none}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mode{border:2px solid var(--line);background:#fff;border-radius:10px;padding:12px 6px;font-weight:700;font-size:14px;text-align:center;min-height:48px}
+.mode[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:#fff}
+.order-card .btn{width:100%;margin-top:18px}
+.hours-line{font-size:13px;color:var(--muted);margin-top:12px;min-height:20px}
+@media(min-width:900px){.hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;padding-top:72px;padding-bottom:76px}}
+
+/* strip */
+.strip{background:var(--yellow);color:var(--navy-dark);font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:18px}
+.strip .wrap{display:flex;gap:12px 36px;flex-wrap:wrap;justify-content:center;padding-top:14px;padding-bottom:14px;text-align:center}
+
+/* sections */
+section{padding:68px 0}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(32px,5vw,48px);color:var(--navy)}
+.sec-head p{color:var(--muted);max-width:420px;font-size:15px}
+
+/* menu */
+.chips{position:sticky;top:68px;z-index:20;background:var(--cream);padding:12px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin-bottom:8px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:2px solid var(--line);background:#fff;border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px;min-height:42px}
+.chip[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.cat{padding-top:26px}
+.cat h3{font-size:30px;color:var(--red);margin-bottom:4px}
+.cat .note{font-size:14px;color:var(--muted);margin-bottom:14px}
+.items{display:grid;gap:10px}
+@media(min-width:760px){.items{grid-template-columns:1fr 1fr}}
+.item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px}
+.item .info{flex:1;min-width:0}
+.item .name{font-weight:700;font-size:16px}
+.item .meta{font-size:13px;color:var(--muted)}
+.item .price{font-family:'Oswald',sans-serif;font-weight:600;font-size:18px;color:var(--navy);white-space:nowrap}
+.add{width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;font-size:24px;font-weight:700;line-height:1;display:grid;place-items:center;flex:none}
+.add:hover{background:var(--red-dark)}
+.add[disabled]{background:#d9d3c2;cursor:default}
+.mkt{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+
+/* locations */
+.locs{display:grid;gap:16px}
+@media(min-width:760px){.locs{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.locs{grid-template-columns:repeat(3,1fr)}}
+.loc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:6px}
+.loc h3{font-size:24px;color:var(--navy)}
+.loc .addr{color:var(--ink)}
+.loc .hrs{font-size:14px;color:var(--muted)}
+.loc .actions{display:flex;gap:10px;margin-top:auto;padding-top:14px;flex-wrap:wrap}
+.loc .actions .btn{padding:10px 16px;font-size:14px;min-height:42px}
+.tag{display:inline-block;background:var(--yellow);color:var(--navy-dark);font-weight:700;font-size:12px;border-radius:999px;padding:3px 10px;align-self:flex-start;letter-spacing:.04em;text-transform:uppercase}
+
+/* story */
+.story{background:var(--navy);color:#fff}
+.story .sec-head h2{color:#fff}
+.story .sec-head p{color:#cfd4f5}
+.trio{display:grid;gap:16px}
+@media(min-width:800px){.trio{grid-template-columns:repeat(3,1fr)}}
+.trio div{border:1.5px solid rgba(255,255,255,.25);border-radius:var(--radius);padding:24px}
+.trio h3{color:var(--yellow);font-size:26px;margin-bottom:8px}
+.trio p{color:#dfe3ff;font-size:15px}
+
+/* 4141 */
+.uptown{display:grid;gap:20px;background:var(--red);color:#fff;border-radius:var(--radius);padding:32px}
+.uptown h2{font-size:clamp(30px,4.5vw,44px)}
+.uptown p{color:#ffe3e3;max-width:520px}
+.uptown .btn{align-self:start}
+@media(min-width:800px){.uptown{grid-template-columns:1fr auto;align-items:center}}
+
+/* more */
+.more{display:grid;gap:16px}
+@media(min-width:800px){.more{grid-template-columns:repeat(3,1fr)}}
+.more a.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:transform .15s,box-shadow .15s}
+.more a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.more h3{font-size:24px;color:var(--red)}
+.more p{color:var(--muted);font-size:15px}
+.more span.go{margin-top:8px;font-weight:700;color:var(--navy)}
+
+/* footer */
+footer{background:var(--navy-dark);color:#cfd4f5;padding:44px 0 90px;font-size:14px}
+footer .cols{display:grid;gap:22px}
+@media(min-width:800px){footer .cols{grid-template-columns:1.3fr 1fr 1fr}}
+footer h4{font-family:'Oswald',sans-serif;text-transform:uppercase;color:var(--yellow);font-size:16px;margin-bottom:8px;letter-spacing:.06em}
+footer a{text-decoration:none;display:block;padding:3px 0}
+footer a:hover{color:#fff;text-decoration:underline}
+footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;opacity:.85;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+
+/* cart drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,14,40,.55);opacity:0;pointer-events:none;transition:opacity .2s;z-index:90}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--cream);z-index:100;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.25)}
+.drawer.on{transform:none}
+.drawer header{background:var(--navy);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+.drawer header h2{font-size:26px}
+.x{width:44px;height:44px;border-radius:50%;font-size:26px;color:inherit}
+.x:hover{background:rgba(0,0,0,.08)}
+.drawer .ctx{padding:12px 20px;background:var(--yellow);color:var(--navy-dark);font-weight:700;font-size:14px}
+.lines{flex:1;overflow:auto;padding:8px 20px}
+.line{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.line .n{font-weight:700}
+.line .o{font-size:13px;color:var(--muted);grid-column:1}
+.line .p{font-family:'Oswald',sans-serif;font-weight:600;color:var(--navy);text-align:right}
+.qty{display:flex;align-items:center;gap:6px;grid-column:1/-1;margin-top:6px}
+.qty button{width:36px;height:36px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:700;font-size:18px}
+.qty span{min-width:24px;text-align:center;font-weight:700}
+.qty .rm{margin-left:auto;width:auto;border:0;background:none;color:var(--red);font-size:13px;text-decoration:underline;padding:0 6px}
+.empty{padding:50px 10px;text-align:center;color:var(--muted)}
+.foot{padding:16px 20px 22px;border-top:1px solid var(--line);background:#fff}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:18px;margin-bottom:4px}
+.foot small{display:block;color:var(--muted);margin-bottom:12px}
+.foot .btn{width:100%}
+.foot .btn[disabled]{background:#d9d3c2;color:#8a8473;cursor:not-allowed}
+
+/* sheet (options) + success modal */
+.modal{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;background:rgba(10,14,40,.6)}
+.modal.on{display:flex}
+.sheet{background:#fff;width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:24px;max-height:90vh;overflow:auto}
+@media(min-width:640px){.modal{align-items:center}.sheet{border-radius:20px}}
+.sheet h3{font-size:28px;color:var(--red)}
+.sheet .opt{display:flex;align-items:center;gap:12px;padding:14px;border:2px solid var(--line);border-radius:10px;margin-top:10px;cursor:pointer;min-height:52px}
+.sheet .opt input{width:20px;height:20px;accent-color:var(--navy)}
+.sheet .opt .pp{margin-left:auto;font-weight:700;color:var(--navy)}
+.sheet .row{display:flex;gap:10px;margin-top:18px}
+.sheet .row .btn{flex:1}
+.ok{text-align:center}
+.ok .tick{width:64px;height:64px;border-radius:50%;background:var(--yellow);color:var(--navy-dark);font-size:34px;display:grid;place-items:center;margin:0 auto 14px;font-weight:700}
+.ok p{color:var(--muted);margin-top:8px}
+.ok .demo-note{background:var(--cream);border:1px dashed var(--navy);border-radius:10px;padding:12px;font-size:13px;color:var(--navy-dark);margin-top:16px}
+
+/* mobile cart bar */
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;background:var(--red);color:#fff;border-radius:999px;padding:14px 22px;display:none;justify-content:space-between;align-items:center;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.3);min-height:52px}
+.bar.on{display:flex}
+@media(min-width:900px){.bar{display:none!important}}
+
+.toast{position:fixed;left:50%;top:84px;transform:translate(-50%,-12px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:.2s;z-index:130;max-width:92vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast{z-index:140}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="preview"><strong>Design preview</strong> for New Orleans Hamburger &amp; Seafood Co. Ordering is a mock-up and no orders are sent.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="New Orleans Hamburger &amp; Seafood Co. home"><img src="assets/logo.png" alt="New Orleans Hamburger &amp; Seafood Co., since 1984" width="440" height="96"></a>
+    <nav class="main" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#locations">Locations</a>
+      <a href="#story">About</a>
+      <a href="#uptown">4141 Live</a>
+      <a href="#more">Gift Cards &amp; Careers</a>
+    </nav>
+    <div class="top-actions">
+      <a class="btn btn-yellow" href="#order" id="topOrder">Order Online</a>
+      <button class="cart-btn" id="cartOpen" aria-label="Open cart">Cart <span class="count" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<div class="hero" id="order">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Fast. Casual. Since 1984.</div>
+      <h1>Real New Orleans <em>comfort food.</em></h1>
+      <p class="lead">Home of Thin Fried Catfish. Half-pound burgers, poboys, and gumbo, made fresh and served fast at neighborhood restaurants around the city.</p>
+      <div class="hero-badges">
+        <span class="badge">Takeout</span><span class="badge">Delivery</span><span class="badge">Drive-thru</span><span class="badge">Open until 9 / 10 PM</span>
+      </div>
+    </div>
+
+    <form class="order-card" id="orderForm" aria-labelledby="ocTitle">
+      <h2 id="ocTitle">Start your order</h2>
+      <p class="sub">Pick your restaurant and how you want it.</p>
+      <label class="f" for="locSel">Location</label>
+      <select id="locSel" required>
+        <option value="">Choose a location</option>
+      </select>
+      <label class="f" id="modeLbl">How</label>
+      <div class="modes" role="group" aria-labelledby="modeLbl">
+        <button type="button" class="mode" data-mode="Pickup" aria-pressed="true">Pickup</button>
+        <button type="button" class="mode" data-mode="Delivery" aria-pressed="false">Delivery</button>
+        <button type="button" class="mode" data-mode="Drive-thru" aria-pressed="false">Drive-thru</button>
+      </div>
+      <button class="btn btn-navy" type="submit">See the menu</button>
+      <div class="hours-line" id="hoursLine" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<div class="strip"><div class="wrap"><span>Thin-Fried Catfish</span><span>Half-Pound Burgers</span><span>One-Handed Poboys</span><span>City's Best Gumbo</span></div></div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The Menu</h2>
+      <p>Full dine-in and to-go menu in one place, so there is no PDF to download. Prices shown are from the current To-Go menu.</p>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Menu categories"></div>
+    <div id="menuBody"></div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Find a Location</h2>
+      <p>Every restaurant with hours, phone, and directions, and one tap to start an order there.</p>
+    </div>
+    <div class="locs" id="locGrid"></div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Since 1984</h2>
+      <p>Traditional dishes that locals and foodies love, served with the hospitality that made the city famous.</p>
+    </div>
+    <div class="trio">
+      <div><h3>Thin-Fried Catfish</h3><p>The signature dish. Fresh, light, and well-seasoned, the reason people come back.</p></div>
+      <div><h3>Fresh Never Frozen</h3><p>Grain-fed 100% ground beef, premium toppings, French bread, and artisan buns.</p></div>
+      <div><h3>Made In House</h3><p>Homemade onion rings and local Gulf seafood on a menu rich in New Orleans tradition.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4141 -->
+<section id="uptown">
+  <div class="wrap">
+    <div class="uptown">
+      <div>
+        <div class="eyebrow" style="color:var(--yellow)">Uptown &middot; 4141 St. Charles Ave</div>
+        <h2>Happy hour daily, 3:00 to 6:30</h2>
+        <p>Come have a drink with us. Live events, cocktails, and a full coffee shop that opens at 7 AM.</p>
+      </div>
+      <a class="btn btn-yellow" href="https://4141nola.com/events/" target="_blank" rel="noopener">Live events at 4141</a>
+    </div>
+  </div>
+</section>
+
+<!-- MORE -->
+<section id="more" style="padding-top:0">
+  <div class="wrap">
+    <div class="more">
+      <a class="card" href="https://onelink.quickgifts.com/merchant/new-orleans-hamburger-and-seafood-co/" target="_blank" rel="noopener"><h3>Gift Cards</h3><p>Give someone the food they love.</p><span class="go">Buy a gift card &rarr;</span></a>
+      <a class="card" href="https://nohsc.com/join-us/" target="_blank" rel="noopener"><h3>Join Our Team</h3><p>Now hiring across our restaurants.</p><span class="go">Apply today &rarr;</span></a>
+      <a class="card" href="https://nohsc.com/feedback/" target="_blank" rel="noopener"><h3>Feedback</h3><p>Tell us how we did at your location.</p><span class="go">Send a note &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img src="assets/logo.png" alt="New Orleans Hamburger &amp; Seafood Co." width="220" height="48" style="height:48px;width:auto;margin-bottom:10px;border-radius:8px">
+        <p>Fast, casual, and doing it right since 1984.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#menu">Menu</a><a href="#locations">Locations</a><a href="#story">About Us</a><a href="https://4141nola.com/events/" target="_blank" rel="noopener">4141 Live Events</a>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="https://www.facebook.com/NewOrleansHamburger" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/noburgerandseafood/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/user/NewOrleansHamburger" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 New Orleans Hamburger &amp; Seafood Co.</span>
+      <span><a href="https://in-flu-ential.vercel.app" target="_blank" rel="noopener" style="display:inline">Designed by IN-FLU-ENTIAL</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- mobile cart bar -->
+<button class="bar" id="bar" aria-label="View cart"><span id="barCount">0 items</span><span id="barTotal">$0.00</span></button>
+
+<!-- cart drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Your order" aria-hidden="true">
+  <header><h2>Your Order</h2><button class="x" id="cartClose" aria-label="Close cart">&times;</button></header>
+  <div class="ctx" id="ctx">No location selected</div>
+  <div class="lines" id="lines"></div>
+  <div class="foot">
+    <div class="tot"><span>Subtotal</span><span id="sub">$0.00</span></div>
+    <small>Tax and fees calculated at checkout.</small>
+    <button class="btn btn-navy" id="checkout" disabled>Place order</button>
+  </div>
+</aside>
+
+<!-- option sheet -->
+<div class="modal" id="optModal" role="dialog" aria-modal="true" aria-labelledby="optTitle">
+  <div class="sheet" id="optSheet"></div>
+</div>
+
+<!-- success -->
+<div class="modal" id="okModal" role="dialog" aria-modal="true" aria-labelledby="okTitle">
+  <div class="sheet ok" id="okSheet"></div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ---------- DATA ---------- */
+const LOCS=[
+ {id:'elmwood',name:'Clearview in Elmwood',addr:'1005 S. Clearview Parkway',city:'New Orleans, LA 70121',phone:'(504) 734-1122',hrs:['Sun-Thu 11 AM to 9 PM','Fri-Sat 11 AM to 10 PM'],short:'Sun-Thu until 9 PM, Fri-Sat until 10 PM'},
+ {id:'davidr',name:'Veterans @ David Drive',addr:'6920 Veterans Memorial Blvd',city:'Metairie, LA 70003',phone:'(504) 455-1272',hrs:['Sun-Thu 11 AM to 9 PM','Fri-Sat 11 AM to 10 PM'],short:'Sun-Thu until 9 PM, Fri-Sat until 10 PM'},
+ {id:'behrman',name:'Veterans @ Martin Behrman',addr:'817 Veterans Memorial Blvd',city:'Metairie, LA 70005',phone:'(504) 837-8580',hrs:['Sun-Thu 11 AM to 9 PM','Fri-Sat 11 AM to 10 PM'],short:'Sun-Thu until 9 PM, Fri-Sat until 10 PM'},
+ {id:'harvey',name:'Manhattan @ LaPalco',addr:'2515B Manhattan Blvd',city:'Harvey, LA 70058',phone:'(504) 684-6050',hrs:['Sun-Thu 11 AM to 9 PM','Fri-Sat 11 AM to 10 PM'],short:'Sun-Thu until 9 PM, Fri-Sat until 10 PM'},
+ {id:'uptown',name:'St. Charles in Uptown',addr:'4141 St. Charles Ave',city:'New Orleans, LA 70115',phone:'(504) 247-9753',hrs:['Restaurant: Sun-Thu 11 AM to 9 PM, Fri-Sat 11 AM to 10 PM','Coffee shop: Sun-Thu 7 AM to 9 PM, Fri-Sat 7 AM to 10 PM'],short:'Restaurant 11 AM to 9 / 10 PM, coffee shop from 7 AM',tag:'Happy hour 3 to 6:30'}
+];
+const RINGS={key:'rings',label:'Substitute onion rings',price:1.99};
+const EGG={key:'egg',label:'Add a fried egg',price:1.99};
+const MENU=[
+ {id:'starters',name:'Starters & Sides',items:[
+  {n:'Crawfish Queso',p:8.99},{n:'Spinach & Artichoke Dip',p:9.99},
+  {n:"City's Best Gumbo",p:5.99,size:[['Cup',5.99],['Bowl',9.99]]},
+  {n:'Fried Mozzarella Sticks',p:7.99},{n:'Fried Eggplant Sticks',p:7.99},{n:'House Made Onion Rings',p:7.99},
+  {n:'Fried Calamari',p:9.99},{n:'Alligator Poppers',p:9.99},{n:'Boudin Balls',p:9.99},{n:'Fried Green Tomatoes',p:5.99},
+  {n:'Chicken Wings',p:12.99,choose:['Buffalo','BBQ','Hot Honey','Garlic Parmesan']},
+  {n:'Charbroiled Oysters',mkt:'Half dozen or dozen, market price'}
+ ]},
+ {id:'burgers',name:'Half Pound Burgers',note:'Served with Famous Garlic Herb Fries.',items:[
+  {n:'The Gourmet',p:14.49},{n:'Big CH-EASY',p:15.49},{n:'All American',p:15.49},{n:'Mushroom Swiss',p:16.49},
+  {n:'Roadhouse',p:16.49},{n:'Hickory Bacon Cheese',p:16.49},{n:'Bacon Egg & Cheese',p:16.49},{n:"Rajun' Cajun",p:16.49}
+ ],opts:[RINGS,EGG]},
+ {id:'sliders',name:'Sliders',note:'Order of two, served with fries.',items:[
+  {n:'Cheeseburger Sliders',p:10.99},{n:'Meatball Sliders',p:10.99},{n:'Buffalo Chicken Sliders',p:10.99},{n:'Chicken & Waffle Sliders',p:11.99}
+ ],opts:[RINGS]},
+ {id:'sandwiches',name:'Sandwiches & Tacos',note:'Served with fries.',items:[
+  {n:'Grilled Fish Sandwich',p:14.99,size:[['Fish',14.99],['Redfish',18.99]]},{n:'Single Decker Club',p:14.99},
+  {n:'Shrimp Tacos',p:12.99},{n:'Chicken Parmesan Sandwich',p:14.99},{n:'Softshell Crab BLT',p:21.99}
+ ],opts:[RINGS]},
+ {id:'poboys',name:'Poboys',note:'Served with garlic herb fries.',items:[
+  {n:'BBQ Shrimp One-Handed Poboy',p:16.99},{n:'Sloppy Roast Beef Poboy',p:14.99},{n:'Meatball Poboy',p:13.99},
+  {n:"Patton's Hot Sausage Poboy",p:12.99},{n:'Shrimpzilla',p:16.99},{n:'10" Overstuffed Fried Shrimp',p:15.99},
+  {n:'10" Thin Fried Catfish',p:15.99},{n:'10" Thick Fried Catfish',p:15.99},{n:'10" Softshell Crab',p:19.99},
+  {n:'10" Fried Catfish & Shrimp Combo',p:19.99,meta:'With fries and a cup of soup, gumbo, or red beans'}
+ ],opts:[RINGS]},
+ {id:'seafood',name:'Seafood Platters',note:'Hush puppies, Mardi Gras slaw, and garlic herb fries.',items:[
+  {n:'Thin Fried Catfish',p:16.99,star:true},{n:'Fried Shrimp',p:16.99},{n:'Catfish (Thick)',p:17.99},{n:'Fried Frog Legs',p:18.99},{n:'Softshell Crab',p:25.99}
+ ],opts:[RINGS]},
+ {id:'fish',name:'Fish Platters',note:'Rice pilaf and steamed veggies.',items:[
+  {n:'Grilled Fish',p:15.99},{n:'Fish Almondine',p:16.99,meta:'Redfish +$4.00'},{n:'Crabmeat & Eggplant Stack',p:16.99}
+ ]},
+ {id:'combos',name:'Combo Platters',items:[
+  {n:'Any Two Choices',p:18.99},{n:'Any Three Choices',p:22.99},{n:'The Seafood Platter',p:29.99},{n:'The Whole Thing',p:42.99}
+ ],opts:[RINGS]},
+ {id:'comfort',name:'Comfort Foods',items:[
+  {n:'Chicken Tenders',p:11.99},{n:'Chicken & Waffles',p:12.99},{n:'Spaghetti & Meatballs',p:14.99},{n:'Chicken Parmesan',p:14.99},
+  {n:'Catfish Lafitte',p:13.99},{n:'Red Beans & Rice',p:11.99},{n:'Bayou Pasta',p:15.99},
+  {n:'Alfredo Pasta',p:11.99,size:[['Plain',11.99],['With chicken or shrimp',14.99]]}
+ ]},
+ {id:'salads',name:'Salads',items:[
+  {n:'Asian Cajun Chicken',p:15.99},{n:'Strawberry Fields',p:15.99},{n:'Chicken Tender Club',p:15.99},{n:'Sizzling Shrimp Remoulade',p:15.99},
+  {n:'Grilled Chicken Cobb',p:15.99},{n:'The Wedge',p:13.99},{n:'Grilled Chicken Caesar',p:13.99}
+ ]},
+ {id:'kids',name:"Kid's Meals",note:'Ages 12 and under. Fries or fruit and a drink included.',items:[
+  {n:"Kid's Thin Fried Catfish",p:8.49},{n:"Kid's Fried Shrimp",p:8.49},{n:"Kid's Chicken Tenders",p:8.49},{n:"Kid's Grilled Cheese",p:8.49},
+  {n:"Kid's Spaghetti & Meatball",p:8.49},{n:"Kid's Burger",p:8.49},{n:"Kid's Waffle",p:8.49}
+ ]},
+ {id:'drinks',name:'Beverages',items:[
+  {n:'Beverage Bar',p:3.49},{n:'Bottled Beer, Domestic',p:3.50},{n:'Bottled Beer, Import',p:4.50},{n:'Wine by the Glass',p:4.00},{n:'Frozen Daiquiri',p:7.00}
+ ]}
+];
+
+/* ---------- STATE ---------- */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const money=n=>'$'+n.toFixed(2);
+const state={loc:'',mode:'Pickup',cart:[]};
+
+/* ---------- LOCATIONS ---------- */
+const locSel=$('#locSel');
+LOCS.forEach(l=>locSel.insertAdjacentHTML('beforeend',`<option value="${l.id}">${l.name}</option>`));
+$('#locGrid').innerHTML=LOCS.map(l=>`
+  <article class="loc">
+    ${l.tag?`<span class="tag">${l.tag}</span>`:''}
+    <h3>${l.name}</h3>
+    <div class="addr">${l.addr}<br>${l.city}</div>
+    <div class="hrs">${l.hrs.join('<br>')}</div>
+    <div class="actions">
+      <button class="btn btn-navy" data-pick="${l.id}">Order here</button>
+      <a class="btn btn-line" style="color:var(--navy)" href="tel:${l.phone.replace(/\D/g,'')}">${l.phone}</a>
+      <a class="btn btn-line" style="color:var(--navy)" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.name+' '+l.addr+' '+l.city)}">Directions</a>
+    </div>
+  </article>`).join('');
+function setLoc(id,scroll){
+  state.loc=id; locSel.value=id;
+  const l=LOCS.find(x=>x.id===id);
+  $('#hoursLine').textContent=l?`${l.name}: ${l.short}`:'';
+  renderCart();
+  if(scroll) document.getElementById('menu').scrollIntoView();
+}
+locSel.addEventListener('change',e=>setLoc(e.target.value,false));
+$('#locGrid').addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(b){setLoc(b.dataset.pick,true);toast('Ordering from '+LOCS.find(x=>x.id===b.dataset.pick).name)}});
+$$('.mode').forEach(b=>b.addEventListener('click',()=>{
+  state.mode=b.dataset.mode; $$('.mode').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false')); renderCart();
+}));
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault(); if(!state.loc){toast('Choose a location first');locSel.focus();return} document.getElementById('menu').scrollIntoView()});
+
+/* ---------- MENU ---------- */
+$('#chips').innerHTML=MENU.map((c,i)=>`<button class="chip" data-cat="${c.id}" aria-pressed="${i===0}">${c.name}</button>`).join('');
+$('#menuBody').innerHTML=MENU.map(c=>`
+  <div class="cat" id="cat-${c.id}">
+    <h3>${c.name}</h3>${c.note?`<div class="note">${c.note}</div>`:''}
+    <div class="items">${c.items.map((it,i)=>`
+      <div class="item">
+        <div class="info">
+          <div class="name">${it.n}${it.star?' <span class="tag" style="margin-left:6px">Signature</span>':''}</div>
+          ${it.meta||it.mkt?`<div class="meta">${it.meta||it.mkt}</div>`:''}
+        </div>
+        ${it.mkt?`<span class="mkt">Ask in store</span><button class="add" disabled aria-label="${it.n} not available online">+</button>`
+          :`<span class="price">${it.size?'From '+money(Math.min(...it.size.map(s=>s[1]))):money(it.p)}</span><button class="add" data-cat="${c.id}" data-i="${i}" aria-label="Add ${it.n}">+</button>`}
+      </div>`).join('')}
+    </div>
+  </div>`).join('');
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;document.getElementById('cat-'+b.dataset.cat).scrollIntoView()});
+const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const id=en.target.id.replace('cat-','');$$('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.cat===id?'true':'false'));const a=$(`.chip[data-cat="${id}"]`);if(a)a.scrollIntoView({inline:'center',block:'nearest'})}})},{rootMargin:'-140px 0px -70% 0px'});
+$$('.cat').forEach(c=>io.observe(c));
+
+$('#menuBody').addEventListener('click',e=>{
+  const b=e.target.closest('.add'); if(!b||b.disabled)return;
+  if(!state.loc){toast('Choose your location first');document.getElementById('order').scrollIntoView();setTimeout(()=>locSel.focus(),400);return}
+  const cat=MENU.find(c=>c.id===b.dataset.cat), it=cat.items[+b.dataset.i];
+  const opts=cat.opts||[];
+  if(it.size||it.choose||opts.length) openSheet(cat,it); else addLine(it.n,it.p,[]);
+});
+
+/* ---------- OPTION SHEET ---------- */
+function openSheet(cat,it){
+  const sheet=$('#optSheet'); const opts=cat.opts||[];
+  const base=it.size?it.size[0][1]:it.p;
+  sheet.innerHTML=`
+    <h3 id="optTitle">${it.n}</h3>
+    <div class="meta" style="color:var(--muted);font-size:14px">${cat.note||''}</div>
+    ${it.size?`<label class="f">Size</label>`+it.size.map((s,i)=>`<label class="opt"><input type="radio" name="size" value="${i}" ${i===0?'checked':''}><span>${s[0]}</span><span class="pp">${money(s[1])}</span></label>`).join(''):''}
+    ${it.choose?`<label class="f">Flavor</label>`+it.choose.map((s,i)=>`<label class="opt"><input type="radio" name="flav" value="${i}" ${i===0?'checked':''}><span>${s}</span></label>`).join(''):''}
+    ${opts.length?`<label class="f">Make it yours</label>`+opts.map((o,i)=>`<label class="opt"><input type="checkbox" name="opt" value="${i}"><span>${o.label}</span><span class="pp">+${money(o.price)}</span></label>`).join(''):''}
+    <div class="row"><button class="btn btn-line" style="color:var(--navy)" id="optCancel" type="button">Cancel</button><button class="btn btn-red btn-navy" id="optAdd" type="button">Add to order</button></div>`;
+  $('#optModal').classList.add('on');
+  $('#optCancel').onclick=()=>$('#optModal').classList.remove('on');
+  $('#optAdd').onclick=()=>{
+    let price=base, notes=[];
+    if(it.size){const s=it.size[+sheet.querySelector('[name=size]:checked').value];price=s[1];notes.push(s[0])}
+    if(it.choose){notes.push(it.choose[+sheet.querySelector('[name=flav]:checked').value])}
+    sheet.querySelectorAll('[name=opt]:checked').forEach(c=>{const o=opts[+c.value];price+=o.price;notes.push(o.label)});
+    addLine(it.n,price,notes); $('#optModal').classList.remove('on');
+  };
+}
+$('#optModal').addEventListener('click',e=>{if(e.target.id==='optModal')e.target.classList.remove('on')});
+
+/* ---------- CART ---------- */
+function addLine(name,price,notes){
+  const key=name+'|'+notes.join(',');
+  const ex=state.cart.find(l=>l.key===key);
+  if(ex)ex.q++; else state.cart.push({key,name,price,notes,q:1});
+  renderCart(); toast(name+' added');
+}
+function renderCart(){
+  const n=state.cart.reduce((a,l)=>a+l.q,0), t=state.cart.reduce((a,l)=>a+l.q*l.price,0);
+  $('#cartCount').textContent=n; $('#barCount').textContent=n+(n===1?' item':' items'); $('#barTotal').textContent=money(t); $('#sub').textContent=money(t);
+  $('#bar').classList.toggle('on',n>0);
+  const l=LOCS.find(x=>x.id===state.loc);
+  $('#ctx').textContent=l?`${state.mode} at ${l.name}`:'No location selected';
+  $('#checkout').disabled=!(n&&l);
+  $('#lines').innerHTML=state.cart.length?state.cart.map((l,i)=>`
+    <div class="line">
+      <div class="n">${l.name}</div><div class="p">${money(l.price*l.q)}</div>
+      ${l.notes.length?`<div class="o">${l.notes.join(', ')}</div>`:''}
+      <div class="qty"><button data-q="-1" data-i="${i}" aria-label="Fewer">&minus;</button><span>${l.q}</span><button data-q="1" data-i="${i}" aria-label="More">+</button><button class="rm" data-rm="${i}">Remove</button></div>
+    </div>`).join(''):`<div class="empty"><strong>Your order is empty.</strong><br>Add something from the menu.</div>`;
+}
+$('#lines').addEventListener('click',e=>{
+  const q=e.target.closest('[data-q]'), r=e.target.closest('[data-rm]');
+  if(q){const l=state.cart[+q.dataset.i];l.q+=+q.dataset.q;if(l.q<1)state.cart.splice(+q.dataset.i,1)}
+  if(r){state.cart.splice(+r.dataset.rm,1)}
+  renderCart();
+});
+function drawer(on){$('#drawer').classList.toggle('on',on);$('#scrim').classList.toggle('on',on);$('#drawer').setAttribute('aria-hidden',!on)}
+$('#cartOpen').onclick=()=>drawer(true); $('#bar').onclick=()=>drawer(true); $('#cartClose').onclick=()=>drawer(false); $('#scrim').onclick=()=>drawer(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){drawer(false);$('#optModal').classList.remove('on');$('#okModal').classList.remove('on')}});
+
+/* ---------- MOCK CHECKOUT ---------- */
+$('#checkout').onclick=()=>{
+  const l=LOCS.find(x=>x.id===state.loc), t=state.cart.reduce((a,x)=>a+x.q*x.price,0), n=state.cart.reduce((a,x)=>a+x.q,0);
+  const num='NO-'+Math.floor(1000+Math.random()*9000);
+  $('#okSheet').innerHTML=`
+    <div class="tick">&#10003;</div>
+    <h3 id="okTitle">Order received</h3>
+    <p><strong>${num}</strong> &middot; ${n} ${n===1?'item':'items'} &middot; ${money(t)}<br>${state.mode} at ${l.name}</p>
+    <p>Ready in about 20 minutes.</p>
+    <div class="demo-note"><strong>Design preview.</strong> Nothing was sent to the restaurant. On the live site, this step hands off to your existing Toast ordering so payments, menus, and kitchen tickets stay exactly as they are today.</div>
+    <div class="row"><button class="btn btn-navy" id="okClose" type="button">Back to the menu</button></div>`;
+  state.cart=[]; renderCart(); drawer(false); $('#okModal').classList.add('on');
+  $('#okClose').onclick=()=>$('#okModal').classList.remove('on');
+};
+$('#okModal').addEventListener('click',e=>{if(e.target.id==='okModal')e.target.classList.remove('on')});
+
+/* ---------- TOAST ---------- */
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)}
+renderCart();
+</script>
+</body>
+</html>
